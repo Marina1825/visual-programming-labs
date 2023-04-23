@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
 #include <time.h>
 
@@ -6,13 +6,17 @@ struct Object {
     int id;
     int x; 
     int y; 
-    int path[1000][2];
+    int path[1000][1000];
     int path_length;
 };
 
+class Coordinates {
+
+};
+
 void moveRandom(struct Object *obj) {
-    int dx = rand() % 3 - 1;
-    int dy = rand() % 3 - 1;
+    int dx = rand() % 15 - 1;
+    int dy = rand() % 15 - 1;
     obj->x += dx;
     obj->y += dy;
     
@@ -30,16 +34,30 @@ int main() {
         .y = 500,
         .path_length = 0
     };
+
+    class Coordinates {
+
+    };
     
-    for (int i = 0; i < 100; i++) {
+    int way = 0;
+    int max_way = rand() % (100 - 0) + 0;
+    
+    std::cout << "Position " << way << " step: (" << obj.x << ", " << obj.y << ")\n";
+
+    for (int i = 0; i < max_way; i++) {
         moveRandom(&obj);
-        printf("Object %d moved to (%d, %d)\n", obj.id, obj.x, obj.y);
+        way += 1;
     }
-    
-    printf("Object %d path:\n", obj.id);
+    std::cout << "Position " << way << " step: (" << obj.x << ", " << obj.y << ")\n\n";
+
+    std::cout << "Object " << obj.id << " path:\n";
+
     for (int i = 0; i < obj.path_length; i++) {
-        printf("(%d, %d) ", obj.path[i][0], obj.path[i][1]);
+        std::cout << "(" << obj.path[i][0] << ", " << obj.path[i][1] << "); ";
     }
+    std::cout << "\n\n";
+
+    std::cout << "The path traversed by object " << obj.id << " : " << way << "\n";
     
     return 0;
 }
