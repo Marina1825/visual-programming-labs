@@ -2,16 +2,12 @@
 #include <stdlib.h>
 #include <time.h>
 
-struct Object {
+class Object {
     int id;
     int x; 
     int y; 
     int path[1000][1000];
     int path_length;
-};
-
-class Coordinates {
-
 };
 
 void moveRandom(struct Object *obj) {
@@ -28,15 +24,11 @@ void moveRandom(struct Object *obj) {
 int main() {
     srand(time(NULL));
     
-    struct Object obj = {
+    class Object obj = {
         .id = 1,
         .x = 500,
         .y = 500,
         .path_length = 0
-    };
-
-    class Coordinates {
-
     };
     
     int way = 0;
